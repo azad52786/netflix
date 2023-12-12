@@ -3,11 +3,30 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import appStore from './utils/appstore';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Body from './tabs/Body';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const approute = createBrowserRouter([
+  {
+    path:"/",
+    element : <App/>,
+    children: [
+      {
+        path:"/",
+        element: <Body/>
+      }
+    ]
+  }
+])
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={appStore}>
+      <RouterProvider router={approute}/>
+    </Provider>
   </React.StrictMode>
 );
 
