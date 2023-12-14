@@ -6,21 +6,40 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import appStore from './utils/appstore';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Body from './tabs/Body';
+import Home from './tabs/Home';
+import LandingPage from './component/LandingPage';
+import Login from './tabs/Login';
+import Signup from './tabs/Signup';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
 
 const approute = createBrowserRouter([
   {
     path:"/",
     element : <App/>,
-    children: [
+    children : [
       {
-        path:"/",
-        element: <Body/>
+        path : "/",
+        element: <LandingPage/>
+      },
+      {
+        path: "/login",
+        element : <Login/>
+      },
+      {
+        path : "/signup",
+        element : <Signup/>
+      },
+      {
+        path : "/home",
+        element : <Home/>
       }
     ]
-  }
+  },
+ 
+
 ])
 root.render(
   <React.StrictMode>

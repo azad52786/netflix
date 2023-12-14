@@ -8,7 +8,6 @@ const BackGroundTailer = ({ movie_id }) => {
   return (
     <div className=" w-screen after:bg-gradient-to-r from-black">
       <iframe
-      on
         className=" w-screen aspect-video"
         src={"https://www.youtube.com/embed/" + movie_key + "?autoplay=1&mute=1"}
         title="YouTube video player"

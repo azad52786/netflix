@@ -17,3 +17,8 @@ export const now_playing = "now_playing"
 export const popular = "popular"
 export const upcoming = "upcoming"
 export const top_rated = "top_rated"
+
+
+export const BACKGROUND_IMG = "https://assets.nflxext.com/ffe/siteui/vlv3/b4c7f092-0488-48b7-854d-ca055a84fb4f/5b22968d-b94f-44ec-bea3-45dcf457f29e/IN-en-20231204-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+
+
