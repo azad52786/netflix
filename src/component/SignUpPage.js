@@ -71,10 +71,9 @@ const SignUpPage = () => {
 
   return (
     <div
-      className=" relative w-full bg-gradient-to-br from-gray-800 via-black to-opacity-24
-     rounded-lg "
+      className=" relative w-full "
     >
-      <div>
+      <div className="brightness-50">
         <img src={BACKGROUND_IMG} alt="backgound" className=" bg-cover" />
       </div>
       <form
