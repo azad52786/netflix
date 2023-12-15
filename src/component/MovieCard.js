@@ -26,7 +26,7 @@ const MovieCard = ({title , movies , id}) => {
     function sliderRightHandeler() {
         let width = slider.clientWidth;
         slider.scrollLeft = slider.scrollLeft + width/3;
-        if(!leftSliderbutton){
+        if(!leftSliderbutton){ 
             if(slider.scrollLeft >= 0) setLeftSliderbutton(true)
         }
         if(rightSliderbutton){
@@ -47,7 +47,7 @@ const MovieCard = ({title , movies , id}) => {
             {
                 sliderbtn && leftSliderbutton && 
             <button className=' absolute top-0 bg-gradient-to-r from-black duration-100 font-bold text-3xl 
-            p-2 text-white h-full'
+            p-2 text-white h-full rounded-sm'
                 onClick={sliderLeftHandeler}
                 ><GrPrevious className=' hover:scale-[1.3] duration-200'/>
             </button>
@@ -63,7 +63,7 @@ const MovieCard = ({title , movies , id}) => {
             {
                 sliderbtn && rightSliderbutton && 
             <button className=' absolute right-0 top-0 bg-gradient-to-l from-black duration-100 font-bold text-3xl 
-                    p-2 text-white h-full'
+                    p-2 text-white h-full mr-1 rounded-sm'
             onClick={sliderRightHandeler}
                 ><GrNext className=' hover:scale-[1.3] duration-200'/>
             </button>

@@ -6,6 +6,11 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { getAuth } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { BiSolidHide } from "react-icons/bi";
+import { IoMdEye } from "react-icons/io";
+
 
 
 
@@ -17,7 +22,7 @@ const LoginPage = () => {
   const auth = getAuth();
   const [validPassword, setValidPassword] = useState(true);
   const [validEmail, setValidEmail] = useState(true);
-
+  const [showpass , setShowpass] = useState(false);
   const LoginHandeler = () => {
     const [EmailNotValidMessage, PassNotValidMessage] = checkValidData(
       email.current.value,
@@ -44,11 +49,12 @@ const LoginPage = () => {
         const user = userCredential.user;
         const {uid , email , displayName} = user.auth;
         dispatch(addUser({uid : uid , email : email , displayName : displayName}));
-        console.log(user);
+        // toast.success("logged Successfully")
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        toast.error("Invalid login credentials")
       });
     }
   };
@@ -86,17 +92,24 @@ const LoginPage = () => {
           <p className=" -mt-5 text-xs text-yellow-500">Enter Valid Email like abcd@gmail.com</p>}
 
 
-
-          <input
-            ref={password}
-            type="password"
-            placeholder="password"
-            className={`${
-              !validPassword
-                ? "w-full h-12 px-2 rounded-md bg-[#333333] border-b-2 border-b-yellow-500 outline-none"
-                : "w-full h-12 px-2 rounded-md bg-[#333333] outline-none"
-            }`}
-          />
+          <div className=" relative flex flex-row">
+            <input
+              ref={password}
+              type={!showpass ? "password" : "text"}
+              placeholder="password"
+              className={`${
+                !validPassword
+                  ? "w-full h-12 px-2 rounded-md bg-[#333333] border-b-2 border-b-yellow-500 outline-none pr-10"
+                  : "w-full h-12 px-2 rounded-md bg-[#333333] outline-none pr-10"
+              }`}
+              />
+              <button className=" absolute right-3 top-3"
+                onClick={() => setShowpass(!showpass)}
+              >
+                {!showpass ? <BiSolidHide className="h-6 w-6" />
+                          : <IoMdEye className="h-6 w-6"/>}
+              </button>
+          </div>
           {!validPassword && (
             <p className=" -mt-5 text-xs text-yellow-500">
               Enter Valid password like Abcd@1234

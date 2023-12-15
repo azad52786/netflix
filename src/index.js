@@ -10,6 +10,7 @@ import Home from './tabs/Home';
 import LandingPage from './component/LandingPage';
 import Login from './tabs/Login';
 import Signup from './tabs/Signup';
+import { ToastContainer } from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -45,6 +46,7 @@ root.render(
   <React.StrictMode>
     <Provider store={appStore}>
       <RouterProvider router={approute}/>
+      <ToastContainer/>
     </Provider>
   </React.StrictMode>
 );

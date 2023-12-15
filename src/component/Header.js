@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { USER_AVTER } from '../utils/constant';
 import { auth } from '../Firebase auth/Firebse';
 import { signOut } from "firebase/auth";
+import { toast } from 'react-toastify';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -14,7 +15,8 @@ const Header = () => {
 
   const SignOutHandeler = () => {
     signOut(auth).then(() => {
-      // Sign-out successful.
+      setSignOutContainer(false);
+      toast.success("Sign Out")
     }).catch((error) => {
       // An error happened.
     });
@@ -26,7 +28,7 @@ const Header = () => {
             src={LOGO}
             alt="logo"
             className=' h-20 z-10 ml-5 cursor-pointer'
-              onClick={() => navigate('/')}
+              onClick={!user ? () => navigate('/') : () => navigate('/home')}
             />
 
             {
