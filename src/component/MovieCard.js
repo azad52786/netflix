@@ -35,7 +35,6 @@ const MovieCard = ({title , movies , id}) => {
                 setRightSliderbutton(false);
             }
         }
-
       }
   return (
     <div className='text-white'
