@@ -54,19 +54,19 @@ const Header = () => {
                      <div className=' absolute flex flex-col justify-between gap-y-3 bg-black opacity-90 p-3  text-white
                        text-sm text-opacity-75 min-w-[132px] rounded-md right-6 mt-1
                      '>
-                       <Link>
+                       <Link to='/home'>
                         <div className=' flex '>
                           <div className=' bg-green-600 w-5 h-5 mr-1'></div>
                           <p>{user?.displayName}</p>
                         </div>
                       </Link>
-                       <Link>
+                       <Link to='/home'>
                           <div className=' flex'>
                             <div className=' bg-blue-500 w-5 h-5 mr-1'></div>
                             <p>NooB aCc</p>
                           </div>
                       </Link>
-                      <Link>
+                      <Link to='/home'g >
                         <div className=' flex'>
                           <div className=' bg-slate-500 w-5 h-5 mr-1'></div>
                           <p>Private</p>
