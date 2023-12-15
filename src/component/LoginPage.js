@@ -47,7 +47,7 @@ const LoginPage = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        const {uid , email , displayName} = user.auth;
+        const {uid , email , displayName} = user.auth.currentUser;
         dispatch(addUser({uid : uid , email : email , displayName : displayName}));
         // toast.success("logged Successfully")
       })

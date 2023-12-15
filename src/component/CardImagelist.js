@@ -3,19 +3,17 @@ import { IMG_CDN_URL } from '../utils/constant';
 import { Link } from 'react-router-dom';
 
 const CardImagelist = (props) => {
+  console.log(props);
+  const movie = props.movie;
+  const poster_path = movie.poster_path;
   return (
-      // <div className=''>
-      < >
-      {/* <Link to='/'> */}
+      <div className=' cursor-pointer  h-[230px] min-w-[148px] rounded-md overflow-hidden'>
         <img
-          className=' rounded-md h-[230px] min-w-[148px]'
+          className=' rounded-md h-[230px] min-w-[148px] hover:scale-110 duration-500'
             alt = "image"
-            src={IMG_CDN_URL + props?.movies_path}
+            src={IMG_CDN_URL + poster_path}
           />
-      {/* </Link> */}
-
-      </>
-      // </div>
+      </div>
   )
 }
 

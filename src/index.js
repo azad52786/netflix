@@ -11,6 +11,7 @@ import LandingPage from './component/LandingPage';
 import Login from './tabs/Login';
 import Signup from './tabs/Signup';
 import { ToastContainer } from 'react-toastify';
+import MovieCardShimmer from './component/MovieCardShimmer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

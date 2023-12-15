@@ -4,13 +4,14 @@ import BackGroundTailer from './BackGroundTailer'
 import useFetchmovies from '../hooks/useFetchmovies'
 import { useSelector } from 'react-redux'
 import { now_playing} from '../utils/constant'
+import Shimmer from './Shimmer'
 
 
 const MainMovieContainer = () => {
   const [ismute , setIsmute] = useState(true);
     useFetchmovies(now_playing);
     const movies = useSelector((store) => (store.movies?.now_playing));
-    if(!movies) return ;
+    if(!movies) return <Shimmer/>;
     const tailerMovie = movies[2];
     const {overview , original_title , id} = tailerMovie;
   return (

@@ -3,13 +3,15 @@ import MovieCard from './MovieCard'
 import { useSelector } from 'react-redux'
 import useFetchmovies from '../hooks/useFetchmovies'
 import { popular , top_rated , upcoming } from '../utils/constant'
+import MovieCardShimmer from './MovieCardShimmer'
 
 const SecondaryMovieContainer = () => {
+  
   useFetchmovies(popular);
   useFetchmovies(top_rated);
   useFetchmovies(upcoming);
   const movies = useSelector((store) => (store.movies));
-  if(!movies) return;
+  if(!movies) return <MovieCardShimmer/>;
   return (
     <div className='bg-[#141414]'>
         <div className='-mt-[15%] relative z-20 overflow-hidden w-[95%] mx-9'>
