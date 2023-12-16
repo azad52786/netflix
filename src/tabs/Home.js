@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div className=' overflow-hidden'>
         
-        <Browse/>
+        <Browse path="home"/>
     </div>
   )
 }

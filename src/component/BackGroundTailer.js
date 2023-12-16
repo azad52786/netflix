@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import useFetchTrailer from "../hooks/useFetchTrailer";
 import { useSelector } from "react-redux";
-import { GoUnmute } from "react-icons/go";
-import { IoVolumeMuteOutline } from "react-icons/io5";
 
-const BackGroundTailer = ({ movie_id, ismute }) => {
-  useFetchTrailer(movie_id);
-  const movie_key = useSelector((store) => store.movies?.trailer?.key);
+const BackGroundTailer = ({ movie_id, ismute , trailerKey }) => {
+  useFetchTrailer(movie_id , trailerKey);
+  const Home_movie_key = useSelector((store) => store.alltrailer?.HomeTrailer?.key);
+  const tv_movie_key = useSelector((store) => (store.alltrailer?.TvShowTrailer?.key));
+  let trailer_key = null;
+  if(trailerKey === "movie"){
+    trailer_key = Home_movie_key;
+  }
+  else if(trailerKey === "tv"){
+    trailer_key = tv_movie_key;
+  }
   let movie_source = ismute
-    ? "https://www.youtube.com/embed/" + movie_key + "?autoplay=1&mute=1"
-    : "https://www.youtube.com/embed/" + movie_key + "?autoplay=1";
+    ? "https://www.youtube.com/embed/" + trailer_key + "?autoplay=1&mute=1"
+    : "https://www.youtube.com/embed/" + trailer_key + "?autoplay=1";
   return (
     <div className=" w-screen after:bg-gradient-to-r from-black">
       <iframe

@@ -3,7 +3,6 @@ import { IMG_CDN_URL } from '../utils/constant';
 import { Link } from 'react-router-dom';
 
 const CardImagelist = (props) => {
-  console.log(props);
   const movie = props.movie;
   const poster_path = movie.poster_path;
   return (

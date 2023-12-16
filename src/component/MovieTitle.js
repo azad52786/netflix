@@ -6,7 +6,6 @@ import { IoVolumeMuteOutline } from "react-icons/io5";
 
 
 const MovieTitle = ({title , overview ,ismute  ,setIsmute }) => {
-  console.log(setIsmute)
   return (
     <div className=' absolute flex flex-row justify-between pt-80 z-20 text-white  px-9 w-full aspect-video  bg-gradient-to-r from-black bg-opacity-80'>
       <div className=' w-5/12'>

@@ -3,21 +3,35 @@ import MovieTitle from './MovieTitle'
 import BackGroundTailer from './BackGroundTailer'
 import useFetchmovies from '../hooks/useFetchmovies'
 import { useSelector } from 'react-redux'
-import { now_playing} from '../utils/constant'
 import Shimmer from './Shimmer'
 
 
-const MainMovieContainer = () => {
+const MainMovieContainer = ({path , trailerdata , trailerKey}) => {
   const [ismute , setIsmute] = useState(true);
-    useFetchmovies(now_playing);
+    // let trailerArr = [];
+    // trailerArr.push(trailerdata);
+    useFetchmovies(path , [trailerdata] , trailerKey);
     const movies = useSelector((store) => (store.movies?.now_playing));
-    if(!movies) return <Shimmer/>;
-    const tailerMovie = movies[2];
-    const {overview , original_title , id} = tailerMovie;
+    const tvshow = useSelector((store) => (store.tv?.popular));
+    let renderUI = null;
+    if(path === "home"){
+      renderUI = movies;
+    }
+    else if(path === "tvShow"){
+      renderUI = tvshow;
+    }
+    if(!renderUI) return <Shimmer/>;
+    // console.log(renderUI)
+    // const index = Math.round(Math.random() * renderUI.length);
+    // console.log(index);
+    const tailerMovie = renderUI[0];
+    const overview = tailerMovie?.overview;
+    const original_title = tailerMovie?.original_title;
+    const id = tailerMovie?.id;
   return (
     <div className=' relative w-screen'>
         <MovieTitle overview = {overview} title = {original_title} ismute={ismute} setIsmute={setIsmute} />
-        <BackGroundTailer movie_id = {id} ismute={ismute}/>
+        <BackGroundTailer movie_id = {id} ismute={ismute} trailerKey ={trailerKey}/>
     </div>
   )
 }

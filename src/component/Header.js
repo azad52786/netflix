@@ -35,8 +35,8 @@ const Header = () => {
               user && 
               <div className=' mr-12'>
                 <ul className=' flex justify-around items-center text-white  gap-5 mt-7'>
-                  <li><Link to='#'>Home</Link></li>
-                  <li><Link to='#'>TV Show</Link></li>
+                  <li><Link to='/home'>Home</Link></li>
+                  <li><Link to="/tvshow">TV Show</Link></li>
                   <li><Link to='#'>Movies</Link></li>
                   <li><Link to='#'>New & Popular</Link></li>
                 </ul>

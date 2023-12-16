@@ -12,6 +12,10 @@ import Login from './tabs/Login';
 import Signup from './tabs/Signup';
 import { ToastContainer } from 'react-toastify';
 import MovieCardShimmer from './component/MovieCardShimmer';
+import Shimmer from './component/Shimmer';
+import TvShow from './tabs/TvShow';
+import Movie from './tabs/Movie';
+import NewAndPopu from './tabs/NewAndPopu';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -37,7 +41,20 @@ const approute = createBrowserRouter([
       {
         path : "/home",
         element : <Home/>
-      }
+      },
+      {
+        path : "/tvshow",
+        element : <TvShow/>
+      },
+      {
+        path : "/movie",
+        element : <Movie/>
+      },
+      {
+        path : "/newandpopuler",
+        element : <NewAndPopu/>
+      },
+      
     ]
   },
  

@@ -3,12 +3,14 @@ import React, { useState } from "react";
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
 import Shimmer from './Shimmer';
+import MovieCardShimmer from './MovieCardShimmer';
 const MovieCard = ({title , movies , id}) => {
     const [sliderbtn , setSliderbtn] = useState(false);
     const [leftSliderbutton , setLeftSliderbutton] = useState(false);
     const [rightSliderbutton , setRightSliderbutton] = useState(true);
     const TopMovies = TopRated(CardImagelist);
-    if(!movies) return <Shimmer/>;
+    // console.log(movies)
+    if(!movies) return <MovieCardShimmer/>;
     const slider = document.querySelector(`#${id}`);
     function sliderLeftHandeler() {
         let width = slider.clientWidth;
@@ -54,7 +56,7 @@ const MovieCard = ({title , movies , id}) => {
             }
             <div className='flex gap-x-3 overflow-hidden scroll-smooth' id={id}>
                 {
-                    movies.map((movie , index) => (title === "top_rated"  
+                    movies?.map((movie , index) => (title === "top_rated"  
                     ? (<TopMovies key={movie?.id} index={index+1} movie = {movie}/>)
                     : (<CardImagelist key={movie?.id}  movie = {movie}/> )
                     ))
