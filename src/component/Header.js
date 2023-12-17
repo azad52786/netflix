@@ -1,21 +1,33 @@
 import React, { useState } from 'react'
 import { LOGO } from '../utils/constant'
 import { useNavigate } from 'react-router'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { USER_AVTER } from '../utils/constant';
 import { auth } from '../Firebase auth/Firebse';
 import { signOut } from "firebase/auth";
 import { toast } from 'react-toastify';
+import { removeAllMovieSlice } from '../utils/moviesSlice';
+import { removeWholeMovieTabSlice } from '../utils/movieTabSlice';
+import { removeWholeNewMovieSlice } from '../utils/newmovieSlice';
+import { removeAllTrailerSlice } from '../utils/trailerSlice';
+import { removeAllTvShowSlice } from '../utils/tvShowSlice';
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [signOutContainer , setSignOutContainer] = useState(false);
   const user = useSelector((store) => store?.user);
 
   const SignOutHandeler = () => {
     signOut(auth).then(() => {
       setSignOutContainer(false);
+      dispatch(removeAllMovieSlice())
+      dispatch(removeWholeMovieTabSlice())
+      dispatch(removeWholeNewMovieSlice())
+      dispatch(removeAllTrailerSlice())
+      dispatch(removeAllTvShowSlice())
+
       toast.success("Sign Out")
     }).catch((error) => {
       // An error happened.
@@ -37,8 +49,8 @@ const Header = () => {
                 <ul className=' flex justify-around items-center text-white  gap-5 mt-7'>
                   <li><Link to='/home'>Home</Link></li>
                   <li><Link to="/tvshow">TV Show</Link></li>
-                  <li><Link to='#'>Movies</Link></li>
-                  <li><Link to='#'>New & Popular</Link></li>
+                  <li><Link to="/movie">Movies</Link></li>
+                  <li><Link to='/newandpopuler'>New & Popular</Link></li>
                 </ul>
               </div>
             }

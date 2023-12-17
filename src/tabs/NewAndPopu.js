@@ -1,8 +1,11 @@
 import React from 'react'
+import Browse from '../component/Browse'
 
 const NewAndPopu = () => {
   return (
-    <div>NewAndPopu</div>
+    <div>
+      <Browse path="new"/>
+    </div>
   )
 }
 

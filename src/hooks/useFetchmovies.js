@@ -3,13 +3,14 @@ import { API_OPTIONS } from "../utils/constant";
 import { useDispatch } from "react-redux";
 import { addnow_playingmovies , addpopularmovies , addupcomingmovies , addtop_ratedmovies } from "../utils/moviesSlice";
 import { addairing_todaytv, addon_the_airtv, addpopulartv, addtop_ratedtv } from "../utils/tvShowSlice";
+import { addpopulermovietab } from "../utils/movieTabSlice";
+import { addnewnow_playingmovies, addnewupcomingmovies } from "../utils/newmovieSlice";
 
 const useFetchmovies = (path , movieArr , trailerKey) => {
     const dispatch = useDispatch();
     const fetchMovise = async(movieTitle) => {
-        const fetchData = await fetch("https://api.themoviedb.org/3/"+ trailerKey +"/"+movieTitle+"?page=1" , API_OPTIONS);
+        const fetchData = await fetch("https://api.themoviedb.org/3/"+trailerKey+"/"+ movieTitle , API_OPTIONS);
         const movies = await fetchData.json();
-        // const slicehandeler = ;
         if(path === "home"){
             if(movieTitle === "now_playing") dispatch(addnow_playingmovies(movies?.results));
             if(movieTitle === "popular") dispatch(addpopularmovies(movies?.results));
@@ -28,9 +29,16 @@ const useFetchmovies = (path , movieArr , trailerKey) => {
                 dispatch(addtop_ratedtv(top));
             }
         }
+        else if(path === "movie"){
+             dispatch(addpopulermovietab(movies?.results))
+        }
+        else if(path === 'new'){
+            if(movieTitle === "now_playing") dispatch(addnewnow_playingmovies(movies?.results));
+            if(movieTitle === "upcoming") dispatch(addnewupcomingmovies(movies?.results))
+        }
     }
     useEffect(() => {
-        for( let movieTitle in movieArr){
+        for(let movieTitle in movieArr){
             fetchMovise(movieArr[movieTitle]);
         }
     },[])

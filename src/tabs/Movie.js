@@ -1,8 +1,11 @@
 import React from 'react'
+import Browse from '../component/Browse'
 
 const Movie = () => {
   return (
-    <div>Movie</div>
+    <div>
+      <Browse path="movie"/>
+    </div>
   )
 }
 
