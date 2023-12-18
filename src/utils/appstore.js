@@ -14,7 +14,6 @@ const appStore = configureStore({
     new : newmovieSlice ,
     user: userReducer,
     alltrailer : trailerSlice,
-
   },
 });
 

@@ -2,6 +2,7 @@ export const LOGO = "https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897
 
 
 export const USER_AVTER = "https://okneeraj.github.io/netflix-gpt//avatar-red.jpeg";
+export const FETCH_ALL_MOVIE_DETAILS = "https://api.themoviedb.org/3/";
 
 export const API_OPTIONS = {
     method: 'GET',
@@ -12,6 +13,7 @@ export const API_OPTIONS = {
   };
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w780/"
+export const BG_CDN_URL = "https://image.tmdb.org/t/p/w300/"
 
 export const now_playing = "now_playing"
 export const popular = "popular"

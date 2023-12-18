@@ -37,19 +37,16 @@ const SecondaryMovieContainer = ({movieType , trailerKey , path}) => {
     movies = newmovie;
   }
   let currPageMovies = new Map(Object.entries(movies));
+  console.log(currPageMovies)
   if(!movies) return ;
   return (
     <div className='bg-[#141414]'>
         <div className='-mt-[15%] relative z-20 overflow-hidden w-[95%] mx-9'>
         {
         Array.from(currPageMovies.entries()).map(([key, value], index) => (
-          <MovieCard title={key} movies={value} id={"movie" + index + 1} key={index}/>
+          <MovieCard title={key} movies={value} id={"movie" + index + 1} key={index} path = {path}/>
         ))
       }
-            {/* <MovieCard title={"now_playing"} movies={movies?.now_playing} id="movie1"/>
-            <MovieCard title={"top_rated"} movies={movies?.top_rated} id="movie3"/>
-            <MovieCard title={"popular"} movies={movies?.popular} id="movie2"/>
-            <MovieCard title={"upcoming"} movies={movies?.upcoming} id="movie4"/> */}
         </div>
     </div>
   )
