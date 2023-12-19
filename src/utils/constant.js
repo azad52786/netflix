@@ -3,6 +3,7 @@ export const LOGO = "https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897
 
 export const USER_AVTER = "https://okneeraj.github.io/netflix-gpt//avatar-red.jpeg";
 export const FETCH_ALL_MOVIE_DETAILS = "https://api.themoviedb.org/3/";
+export const VIDEO_API = "https://api.themoviedb.org/3/"
 
 export const API_OPTIONS = {
     method: 'GET',

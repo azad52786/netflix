@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LOGO } from "../utils/constant";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,7 +17,27 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [signOutContainer, setSignOutContainer] = useState(false);
+  const [backgound , setBackground] = useState(false);
   const user = useSelector((store) => store?.user);
+  
+  useEffect(() => {
+    let header = document.querySelector("#header");
+    window.addEventListener("scroll" , function(){
+      if(user) setBackground(true);
+      else setBackground(false);
+      if(backgound && window.scrollY > 40){
+        header.classList.add("bg-black");
+      }
+      else {
+        header.classList.remove("bg-black")
+      }
+    })
+
+    return () => {
+      window.removeEventListener("scroll" , () => {});
+    }
+
+  },[user , backgound])
 
   const SignOutHandeler = () => {
     signOut(auth)
@@ -36,7 +56,7 @@ const Header = () => {
       });
   };
   return (
-    <div className="fixed w-full bg-gradient-to-b from-black flex justify-between z-50">
+    <div className="fixed w-full bg-gradient-to-b from-black flex justify-between z-50 bg-opacity-70" id="header">
       <img
         src={LOGO}
         alt="logo"

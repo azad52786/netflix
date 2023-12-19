@@ -14,6 +14,10 @@ import { ToastContainer } from 'react-toastify';
 import TvShow from './tabs/TvShow';
 import Movie from './tabs/Movie';
 import NewAndPopu from './tabs/NewAndPopu';
+import VideoPlayingTab from './tabs/VideoPlayingTab';
+import ErrorTab from './tabs/ErrorTab';
+import Shimmer from './component/Shimmer';
+import MovieCardShimmer from './component/MovieCardShimmer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -52,8 +56,13 @@ const approute = createBrowserRouter([
         path : "/newandpopuler",
         element : <NewAndPopu/>
       },
+      {
+        path : "/watch/:movieKey/:movieId",
+        element : <VideoPlayingTab/>
+      }
       
-    ]
+    ],
+    errorElement : <ErrorTab/>
   },
  
 

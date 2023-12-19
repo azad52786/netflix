@@ -6,6 +6,7 @@ import { auth } from './Firebase auth/Firebse';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addUser, removerUser } from './utils/userSlice';
+import Footer from './component/Footer';
 
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
     <div>
       <Header/>
       <Outlet/>
+      <Footer/>
     </div>
   )
 }

@@ -10,6 +10,7 @@ import { addUser } from "../utils/userSlice";
 import { toast } from "react-toastify";
 import { BiSolidHide } from "react-icons/bi";
 import { IoMdEye } from "react-icons/io";
+import BtnSpinner from "./btnSpinner";
 
 const SignUpPage = () => {
   const email = useRef(null);
@@ -21,11 +22,10 @@ const SignUpPage = () => {
   const [emailErrorMess, setEmailErrorMess] = useState(null);
   const [validPassword, setValidPassword] = useState(true);
   const [validEmail, setValidEmail] = useState(true);
-  const [btnSpinner, setBtnSpinner] = useState(false);
   const [showpass , setShowpass] = useState(false);
-
+  const [loginSpinner , setLoginSpinner] = useState(false);
   const LoginHandeler = () => {
-    setBtnSpinner(true);
+    setLoginSpinner(true);
     const [EmailNotValidMessage, PassNotValidMessage] = checkValidData(
       email.current.value,
       password.current.value
@@ -33,19 +33,19 @@ const SignUpPage = () => {
     if (EmailNotValidMessage && PassNotValidMessage) {
       setValidEmail(false);
       setValidPassword(false);
-      setBtnSpinner(false);
+      setLoginSpinner(false);
       setEmailErrorMess("Enter Valid Email like abcd@gmail.com");
       setPasswordErrorMess("Enter Valid password like Abcd@1234");
     } else if (EmailNotValidMessage && !PassNotValidMessage) {
       setValidEmail(false);
       setEmailErrorMess("Enter Valid Email like abcd@gmail.com");
       setValidPassword(true);
-      setBtnSpinner(false);
+      setLoginSpinner(false);
     } else if (PassNotValidMessage && !EmailNotValidMessage) {
       setValidPassword(false);
       setPasswordErrorMess("Enter Valid password like Abcd@1234");
       setValidEmail(true);
-      setBtnSpinner(false);
+      setLoginSpinner(false);
     } else {
       // navigate the page to the Browse page
       setValidEmail(true);
@@ -68,20 +68,20 @@ const SignUpPage = () => {
                 addUser({ uid: uid, email: email, displayName: displayName })
               );
               toast.success("logged Successfully");
-              setBtnSpinner(false);
+              setLoginSpinner(false);
             })
             .catch((error) => {
               // An error occurred
               // ...
               // console.log(error);
-              setBtnSpinner(false);
+              setLoginSpinner(false);
             });
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           // ..
-          setBtnSpinner(false);
+          setLoginSpinner(false);
           setValidEmail(false);
           setEmailErrorMess("This email is already Registered");
           navigate("/login");
@@ -151,7 +151,7 @@ const SignUpPage = () => {
           className=" bg-red-600 w-full rounded-md py-2.5"
           onClick={LoginHandeler}
         >
-          {btnSpinner ? "Loading...." : "Sign Up"}
+          {loginSpinner ? <BtnSpinner/>: "Sign Up"}
         </button>
         <p>
           Already Registered?

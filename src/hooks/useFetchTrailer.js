@@ -12,7 +12,7 @@ const useFetchTrailer = (movie_id , trailerKey , path) => {
             (video) => video.type === "Trailer"
           );
         const index = Math.round(Math.random() * trailerData.length);
-        const trailer = trailerData.length > 0 ? trailerData[index] : json.results[0];
+        const trailer = trailerData?.length > 0 ? trailerData[index] : json.results[0];
         if(path === "home" && trailerKey === "movie"){
             dispatch(addhometrailer(trailer));
         }

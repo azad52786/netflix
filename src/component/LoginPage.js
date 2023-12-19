@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BiSolidHide } from "react-icons/bi";
 import { IoMdEye } from "react-icons/io";
+import BtnSpinner from "./btnSpinner";
 
 
 
@@ -23,7 +24,9 @@ const LoginPage = () => {
   const [validPassword, setValidPassword] = useState(true);
   const [validEmail, setValidEmail] = useState(true);
   const [showpass , setShowpass] = useState(false);
+  const [loginSpinner , setLoginSpinner] = useState(false);
   const LoginHandeler = () => {
+    setLoginSpinner(true);
     const [EmailNotValidMessage, PassNotValidMessage] = checkValidData(
       email.current.value,
       password.current.value
@@ -31,12 +34,15 @@ const LoginPage = () => {
     if (EmailNotValidMessage && PassNotValidMessage) {
       setValidEmail(false);
       setValidPassword(false);
+      setLoginSpinner(false);
     } else if (EmailNotValidMessage && !PassNotValidMessage) {
       setValidEmail(false);
       setValidPassword(true);
+      setLoginSpinner(false);
     } else if (PassNotValidMessage && !EmailNotValidMessage) {
       setValidPassword(false);
       setValidEmail(true);
+      setLoginSpinner(false);
     } else {
       // navigate the page to the Browse page
       setValidEmail(true);
@@ -49,11 +55,12 @@ const LoginPage = () => {
         const user = userCredential.user;
         const {uid , email , displayName} = user.auth.currentUser;
         dispatch(addUser({uid : uid , email : email , displayName : displayName}));
-        // toast.success("logged Successfully")
+        setLoginSpinner(false);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        setLoginSpinner(false)
         toast.error("Invalid login credentials")
       });
     }
@@ -122,7 +129,9 @@ const LoginPage = () => {
             className=" bg-red-600 w-full rounded-md py-2.5"
             onClick={LoginHandeler}
           >
-            Sign In
+            {
+              loginSpinner ? <BtnSpinner/> : "Sign In"
+            }
           </button>
 
 

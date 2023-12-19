@@ -34,7 +34,7 @@ const MainMovieContainer = ({path , trailerdata , trailerKey}) => {
     const id = tailerMovie?.id;
   return (
     <div className=' relative w-screen'>
-        <MovieTitle overview = {overview} title = {original_title} ismute={ismute} setIsmute={setIsmute} />
+        <MovieTitle overview = {overview} title = {original_title} ismute={ismute} setIsmute={setIsmute} trailerKey ={trailerKey} movie_id = {id}/>
         <BackGroundTailer movie_id = {id} ismute={ismute} trailerKey ={trailerKey} path ={path}/>
     </div>
   )
