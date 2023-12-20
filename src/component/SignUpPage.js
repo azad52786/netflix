@@ -24,7 +24,10 @@ const SignUpPage = () => {
   const [validEmail, setValidEmail] = useState(true);
   const [showpass , setShowpass] = useState(false);
   const [loginSpinner , setLoginSpinner] = useState(false);
+  const [nameErrorMess , setNameErrorMess] = useState(false);
   const LoginHandeler = () => {
+    if(name.current.value.length === 0) setNameErrorMess(true);
+    else setNameErrorMess(false);
     setLoginSpinner(true);
     const [EmailNotValidMessage, PassNotValidMessage] = checkValidData(
       email.current.value,
@@ -105,8 +108,15 @@ const SignUpPage = () => {
           ref={name}
           type="text"
           placeholder="Email Enter your Name"
-          className="w-full h-12 px-2 rounded-md bg-[#333333] outline-none"
+          className={`${
+            nameErrorMess
+              ? "w-full h-12 px-2 rounded-md bg-[#333333] border-b-2 border-b-yellow-500 outline-none"
+              : "w-full h-12 px-2 rounded-md bg-[#333333] outline-none"
+          }`}
         />
+        {nameErrorMess && (
+          <p className=" -mt-5 text-xs text-yellow-500">Please enter your name</p>
+        )}
         <input
           ref={email}
           type="text"

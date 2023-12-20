@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MainMovieContainer from './MainMovieContainer';
 import SecondaryMovieContainer from './SecondaryMovieContainer';
+import MobileMainContainer from './MobileMainContainer';
 const Browse = ({path}) => {
+  const [ismobile , setIsMobile] = useState(false);
   let trailerdata = null;
   let trailerKey = null;
   let movieType = null;
@@ -38,9 +40,16 @@ const Browse = ({path}) => {
       now_playing : "now_playing"
     }
   }
+  // if(window.screen.width < 420){
+  //   setIsMobile(true);
+  // }
+  // else{
+  //   setIsMobile(false);
+  // }
+  
   return (
     <div className='bg-[#6b7280] overflow-x-hidden'>
-        <MainMovieContainer path={path} trailerdata={trailerdata} trailerKey={trailerKey}/>
+       <MainMovieContainer path={path} trailerdata={trailerdata} trailerKey={trailerKey}/>
         <SecondaryMovieContainer movieType = {movieType} path = {path} trailerKey = {trailerKey}/>
     </div>
   )

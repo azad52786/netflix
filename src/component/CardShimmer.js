@@ -1,8 +1,10 @@
 import React from "react";
 
-const CardShimmer = () => {
+const CardShimmer = ({setishover}) => {
   return (
-    <div className="flex items-center justify-center z-50 relative">
+    <div className="flex items-center justify-center z-50 relative"
+      onMouseLeave={() => setishover(false)}
+    >
       <div
         className="h-[117px] w-[155px] absolute scale-[2] items-center duration-500 flex flex-col 
              bg-[#2f2d2d] rounded-lg shadow-md shadow-black"

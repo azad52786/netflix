@@ -18,6 +18,8 @@ import VideoPlayingTab from './tabs/VideoPlayingTab';
 import ErrorTab from './tabs/ErrorTab';
 import Shimmer from './component/Shimmer';
 import MovieCardShimmer from './component/MovieCardShimmer';
+import Header from './component/Header';
+import { SuggestionsTab } from './tabs/SuggestionsTab';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -59,6 +61,10 @@ const approute = createBrowserRouter([
       {
         path : "/watch/:movieKey/:movieId",
         element : <VideoPlayingTab/>
+      },
+      {
+        path : "/search",
+        element : <SuggestionsTab/>
       }
       
     ],

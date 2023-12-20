@@ -36,9 +36,9 @@ const BackGroundTailer = ({ movie_id, ismute , trailerKey  , path}) => {
     ? "https://www.youtube.com/embed/" + trailer_key + "?autoplay=1&mute=1"
     : "https://www.youtube.com/embed/" + trailer_key + "?autoplay=1";
   return (
-    <div className=" w-screen after:bg-gradient-to-r from-black">
+    <div className=" w-screen  after:bg-gradient-to-r from-black">
       <iframe
-        className=" w-screen aspect-video"
+        className=" w-screen aspect-video h-[26rem] sm:h-fit"
         src={movie_source}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

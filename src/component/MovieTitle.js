@@ -12,30 +12,30 @@ const MovieTitle = ({title , overview ,ismute  ,setIsmute , trailerKey , movie_i
     navigate("/watch/"+ trailerKey +"/" + movie_id);
   }
   return (
-    <div className=' absolute flex flex-row justify-between pt-80 z-20 text-white  px-9 w-full aspect-video  bg-gradient-to-r from-black bg-opacity-80'>
-      <div className=' w-5/12'>
-          <h1 className=' text-6xl font-bold mb-3'>{title}</h1>
-          <p className="text-md md:text-base line-clamp-2 md:line-clamp-2 xl:line-clamp-3">{overview}</p>
-          <div className=' flex gap-x-3 mt-4 text-xl'>
-              <button className=' flex py-3 px-5 bg-white text-black font-bold gap-x-2 rounded-md'
+    <div className=' absolute pb-[4.5rem] sm:pb-0 flex flex-row items-end sm:items-stretch justify-between pt-[20%] z-20 text-white  px-9 w-full aspect-video  bg-gradient-to-r from-black bg-opacity-80'>
+      <div className=' sm:w-7/12 md:w-5/12 w-8/12 mx-auto md:mx-0'>
+          <h1 className=' text-center md:text-start text-xl pt-44 sm:pt-0 sm:text-2xl sm:text-center md:text-5xl font-bold sm:mb-3 mb-2'>{title}</h1>
+          <p className="  md:text-md hidden md:block md:text-base line-clamp-2 md:line-clamp-2 xl:line-clamp-3">{overview}</p>
+          <div className='flex gap-x-3 ml-[25%] sm:ml-[20%] md:ml-0 mt-4 md:text-xl text-sm '>
+              <button className=' sm:h-10 flex py-2 md:py-3 sm:py-2 text-xs sm:text-sm md:text-lg sm:px-5 px-3 md:h-fit bg-white text-black font-bold gap-x-2 rounded-md h-fit'
                 onClick={videoPlayerHandeler}
               >
                 <FaPlay className='mt-1'/> Play </button>
-              <button className=' flex py-3 px-5 bg-[#6d6d6e] bg-opacity-70 text-white font-bold gap-x-2 rounded-md'>
-                <FaInfoCircle className=' mt-1 '/> More info</button> 
+              <button className='flex text-[0.5rem] md:text-lg sm:text-sm sm:py-3 py-2 px-1 sm:px-2 bg-[#6d6d6e] bg-opacity-70 text-white font-bold gap-x-2 rounded-md'>
+                <FaInfoCircle className=' mt-[4px] sm:mt-1'/> More info</button> 
           </div>
       </div>
       <button
-        className=' mr-9 border border-blue-300 rounded-full w-10 h-10 mt-52 content-center'
+        className=' sm:mr-9 border border-blue-300 rounded-full sm:w-10 sm:h-10 w-7 h-7  mt-52 content-center'
         onClick={() => setIsmute(!ismute)}
       >
         {
           ismute && 
-          <IoVolumeMuteOutline className='w-7 h-7'/>
+          <IoVolumeMuteOutline className='sm:w-7 sm:h-7 w-5 h-5'/>
         }
         {
           !ismute && 
-          <GoUnmute className='w-7 h-7'/>
+          <GoUnmute className='sm:w-7 sm:h-7 w-5 h-5'/>
         }
       </button>
     </div>

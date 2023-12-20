@@ -18,30 +18,29 @@ const SecondaryMovieContainer = ({movieType , trailerKey , path}) => {
   else if(path === "new"){
     allmovieData = Object.values(movieType);
   }
-  useFetchmovies(path , allmovieData , trailerKey);
-  const tvshow = useSelector((store) => (store?.tv));
-  const homemovie = useSelector((store) => (store?.movies));
-  const moviemovie = useSelector((store) => (store?.movietab));
-  const newmovie = useSelector((store) => (store?.new))
   let movies = null;
-  if(path === "home") {
-    movies = homemovie;
-  }
-  else if(path === "tvShow"){
-    movies = tvshow;
-  }
-  else if(path === "movie"){
-    movies = moviemovie;
-  }
-  else if(path === "new"){
-    movies = newmovie;
-  }
+  movies = useSelector((store) => {
+    if(path === "home") {
+      return store?.movies;
+    }
+    else if(path === "tvShow"){
+      return store?.tv;
+    }
+    else if(path === "movie"){
+      return store?.movietab;
+    }
+    else if(path === "new"){
+      return store?.new;
+    }
+  })
+  useFetchmovies(path , allmovieData , trailerKey );
+
   let currPageMovies = new Map(Object.entries(movies));
   console.log(currPageMovies)
   if(!movies) return ;
   return (
     <div className='bg-[#141414]'>
-        <div className='-mt-[15%] relative z-20 overflow-hidden w-[95%] mx-9'>
+        <div className='md:-mt-[15%] placeholder: relative z-20 overflow-hidden w-[95%] mx-9'>
         {
         Array.from(currPageMovies.entries()).map(([key, value], index) => (
           <MovieCard title={key} movies={value} id={"movie" + index + 1} key={index} path = {path}/>

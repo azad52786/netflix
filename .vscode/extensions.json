@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "braisc.kinda-monokai-dark"
+        "braisc.kinda-monokai-dark",
+        "davidsanders.search-under-cursor"
     ]
 }

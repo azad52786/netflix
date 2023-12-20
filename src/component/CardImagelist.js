@@ -27,7 +27,7 @@ const CardImagelist = (props) => {
         {
           !ishover && 
         <img
-          className=' rounded-md h-[210px] min-w-[148px] hover:scale-110 duration-500'
+          className=' rounded-md sm:h-[210px] sm:min-w-[148px] h-44 w-32 hover:scale-110 duration-500'
             alt = "image"
             src={IMG_CDN_URL + poster_path}
             onMouseDown={movieDetailsShowHandeler}

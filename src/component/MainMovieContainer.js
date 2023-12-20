@@ -8,26 +8,26 @@ import Shimmer from './Shimmer'
 
 const MainMovieContainer = ({path , trailerdata , trailerKey}) => {
   const [ismute , setIsmute] = useState(true);
-    useFetchmovies(path , [trailerdata] , trailerKey);
-    const movies = useSelector((store) => (store.movies?.now_playing));
-    const tvshow = useSelector((store) => (store.tv?.popular));
-    const movieTabmovies = useSelector((store) => (store.movietab?.popular));
-    const newTabmovies = useSelector((store) => (store.new?.upcoming))
-    let renderUI = null;
+  console.log([trailerdata])
+  let renderUI = null;
+  renderUI = useSelector((store) => {
     if(path === "home"){
-      renderUI = movies;
+      return store.movies?.now_playing;
     }
     else if(path === "tvShow"){
-      renderUI = tvshow;
+      return store.tv?.popular;
     }
     else if(path === "movie"){
-      renderUI = movieTabmovies;
+      return store.movietab?.popular;
     }
     else if(path === "new"){
-      renderUI = newTabmovies;
+      return store.new?.upcoming;
     }
-    if(!renderUI) return <Shimmer/>;
-    const index = Math.round(Math.random() * renderUI.length);
+  })
+  console.log(renderUI)
+  useFetchmovies(path , [trailerdata] , trailerKey );
+  if(!renderUI) return <Shimmer/>;
+  const index = Math.round(Math.random() * renderUI.length);
     const tailerMovie = renderUI[index];
     const overview = tailerMovie?.overview;
     const original_title = tailerMovie?.original_title;

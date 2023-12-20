@@ -12,33 +12,32 @@ import { removeWholeMovieTabSlice } from "../utils/movieTabSlice";
 import { removeWholeNewMovieSlice } from "../utils/newmovieSlice";
 import { removeAllTrailerSlice } from "../utils/trailerSlice";
 import { removeAllTvShowSlice } from "../utils/tvShowSlice";
+import { FaSearch } from "react-icons/fa";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [signOutContainer, setSignOutContainer] = useState(false);
-  const [backgound , setBackground] = useState(false);
+  const [backgound, setBackground] = useState(false);
   const user = useSelector((store) => store?.user);
-  
+
   useEffect(() => {
     let header = document.querySelector("#header");
-    window.addEventListener("scroll" , function(){
-      if(user) setBackground(true);
+    window.addEventListener("scroll", function () {
+      if (user) setBackground(true);
       else setBackground(false);
-      if(backgound && window.scrollY > 40){
+      if (backgound && window.scrollY > 120) {
         header.classList.add("bg-black");
+      } else {
+        header.classList.remove("bg-black");
       }
-      else {
-        header.classList.remove("bg-black")
-      }
-    })
-
+    });
+    
     return () => {
-      window.removeEventListener("scroll" , () => {});
-    }
-
-  },[user , backgound])
-
+      window.removeEventListener("scroll", () => {});
+    };
+  }, [user, backgound]);
+  
   const SignOutHandeler = () => {
     signOut(auth)
       .then(() => {
@@ -56,23 +55,26 @@ const Header = () => {
       });
   };
   return (
-    <div className="fixed w-full bg-gradient-to-b from-black flex justify-between z-50 bg-opacity-70" id="header">
+    <div
+      className="fixed w-full bg-gradient-to-b from-black h-24 sm:h-20  flex justify-between z-50 bg-opacity-70"
+      id="header"
+    >
       <img
         src={LOGO}
         alt="logo"
-        className=" h-20 z-10 ml-5 cursor-pointer"
+        className=" sm:h-20 h-16 z-10 ml-5 cursor-pointer"
         onClick={!user ? () => navigate("/") : () => navigate("/home")}
       />
 
       {user && (
-        <div className=" mr-12">
-          <ul className=" flex justify-around items-center text-white  gap-5 mt-7">
+        <div className=" absolute w-screen sm:w-fit sm:sticky top-8 -left-8 ml-[10%] sm:ml-0 text-sm">
+          <ul className=" flex justify-center sm:justify-around items-center text-white gap-x-8 sm:gap-5 mt-7 text-sm">
             <li>
               <NavLink
                 to="/home"
                 className={({ isActive }) =>
                   isActive
-                    ? `bg-slate-500 opacity-60 rounded-full px-3 py-2 text-gray-800 font-bold`
+                    ? `bg-slate-400 opacity-50 rounded-full px-3 py-2 text-gray-800 font-bold`
                     : ``
                 }
               >
@@ -119,17 +121,23 @@ const Header = () => {
         </div>
       )}
       {user && (
-        <div className=" relative">
+        <div className=" relative flex gap-x-6 text-lg h-fit">
+          <div className=" flex gap-x-2 hover:brightness-75 cursor-pointer text-white sm:mt-6 mt-4 "
+            onClick={() => navigate("/search")}
+          >
+          <FaSearch className=" w-4 h-4 mt-1"/>
+          Search
+          </div>
           <img
             alt="user_Profile"
             src={USER_AVTER}
-            className=" mr-9 w-9 h-9 mt-5 aspect-square cursor-pointer"
+            className=" mr-9 sm:w-9 sm:h-9 h-6 w-7 sm:mt-7 mt-5 aspect-square cursor-pointer"
             onClick={() => setSignOutContainer(!signOutContainer)}
           />
           {signOutContainer && (
             <div
-              className=" absolute flex flex-col justify-between gap-y-3 bg-black opacity-90 p-3  text-white
-                       text-sm text-opacity-75 min-w-[132px] rounded-md right-6 mt-1
+              className=" absolute top-10 sm:top-16  flex flex-col justify-between gap-y-3 bg-black opacity-90 p-3  text-white
+                       sm:text-sm  text-opacity-75 sm:min-w-[132px] min-w-[95%] rounded-md right-6 mt-1
                      "
             >
               <Link to="/home">

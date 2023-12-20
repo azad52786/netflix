@@ -41,17 +41,17 @@ const MovieCard = ({title , movies , id , path}) => {
     onMouseEnter={() => setSliderbtn(true)}
     onMouseLeave={() => setSliderbtn(false)}
     >
-        <h1 className=' text-2xl mb-3 mt-5'>{title}</h1>
+        <h1 className=' sm:text-2xl text-lg mb-1 sm:mt-5'>{title}</h1>
         <div className=' relative rounded-md pr-1'>
             {
                 sliderbtn && leftSliderbutton && 
-            <button className='h-[210px] absolute top-3 bg-gradient-to-r from-black duration-100 font-bold text-3xl 
+            <button className='h-[210px] absolute top-3 bg-gradient-to-r from-black duration-100 font-bold text-lg sm:text-3xl 
             p-2 text-white rounded-sm z-10'
                 onClick={sliderLeftHandeler}
                 ><GrPrevious className=' hover:scale-[1.3] duration-200'/>
             </button>
             }
-            <div className= "flex gap-x-3 scroll-smooth overflow-hidden" id={id}>
+            <div className= "flex sm:gap-x-3 gap-x-2 scroll-smooth overflow-hidden -mt-3 sm:mt-0" id={id}>
                 {
                     movies?.map((movie , index) => (title === "top_rated"  
                     ? (<TopMovies key={movie?.id} index={index+1} movie = {movie} path = {path} id={movie?.id} />)

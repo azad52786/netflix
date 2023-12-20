@@ -15,7 +15,7 @@ const VideoCardComponent = ({movie_id , movie_key , setishover , card_id }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const result = useMovieDetails(movie_id , movie_key);
-    if(!result) return <CardShimmer/>;
+    if(!result) return <CardShimmer setishover={setishover}/>;
     let {backdropPath , genres , title ,name , voteAverage} = result;
     if(title?.length > 30){
         title = title.substring(0 , 28);
@@ -66,8 +66,8 @@ const VideoCardComponent = ({movie_id , movie_key , setishover , card_id }) => {
                 {
                    genres.map((li) => {
                     return (
-                        <div className=' flex text-[0.40rem]'>
-                            <li key={li?.id} className=' text-gray-500'>{li?.name}</li> 
+                        <div className=' flex text-[0.40rem]'  key={li?.id}>
+                            <li className=' text-gray-500'>{li?.name}</li> 
                             <BsDot className=' mt-[3px]'/> 
                         </div>
                    )
