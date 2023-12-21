@@ -16,7 +16,6 @@ export const API_OPTIONS = {
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w780/"
 export const BG_CDN_URL = "https://image.tmdb.org/t/p/w300/"
 export const MAIN_BG_URL = "https://image.tmdb.org/t/p/w500/"
-export const OPEN_AI_KEY = "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";
 
 export const now_playing = "now_playing"
 export const popular = "popular"
