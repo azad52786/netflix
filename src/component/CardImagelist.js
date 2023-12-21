@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { IMG_CDN_URL } from '../utils/constant';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import VideoCardComponent from './VideoCardComponent';
 import { useDispatch } from 'react-redux';
 
 const CardImagelist = (props) => {
   const [ishover , setishover] = useState(false);
+  const [ismobile , setIsmobile] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const movie = props.movie;
   const path = props.path;
   const movie_id = props.id;
@@ -16,10 +18,25 @@ const CardImagelist = (props) => {
   }else if(path === "tvShow"){
     movie_key = "tv";
   }
+
+  useEffect(() => {
+    if(window.innerWidth < 600){
+      setIsmobile(true);
+    }
+    else{
+      setIsmobile(false);
+    } 
+  },[window.innerWidth])
+
   const poster_path = movie.poster_path;
 
     const movieDetailsShowHandeler = () => {
-      setishover(true);
+      if(ismobile){
+        navigate("/watch/"+ movie_key+"/" + movie_id)
+      }
+      else {
+        setishover(true);
+      }
     }
 
   return (
@@ -34,7 +51,7 @@ const CardImagelist = (props) => {
           />
         }
           {
-            ishover && 
+            ishover && !ismobile &&
             <VideoCardComponent movie_key={movie_key}  movie_id={movie_id} setishover={setishover}/>
           }
       </div>
@@ -49,7 +66,7 @@ export const TopRated = (CardImagelist) => {
   return (props) => {
     return (
       <div className=' flex'>
-        <h1 className=' h-full text-[13rem] leading-none pb-5 -mr-8 font-bold -z-20'>{props.index}</h1>
+        <h1 className=' h-full sm:text-[13rem] text-[10rem] leading-none pb-5 pt-10 sm:pt-0 -mr-8 font-bold -z-20'>{props.index}</h1>
         <CardImagelist {...props}/>
       </div>
     )

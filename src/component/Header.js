@@ -62,7 +62,7 @@ const Header = () => {
       <img
         src={LOGO}
         alt="logo"
-        className=" sm:h-20 h-16 z-10 ml-5 cursor-pointer"
+        className=" sm:h-20 h-16 z-10 ml-5 -mt-1 sm:mt-0 cursor-pointer"
         onClick={!user ? () => navigate("/") : () => navigate("/home")}
       />
 
@@ -170,7 +170,7 @@ const Header = () => {
       )}
       {!user && (
         <button
-          className=" h-9 py-1 px-6 mt-7 mr-7 bg-red-600 rounded-sm text-white font-bold"
+          className=" sm:h-9 h-8 py-1 sm:px-6 px-4 sm:mt-7 mt-5 mr-7 bg-red-600 rounded-sm text-white font-bold"
           onClick={() => navigate("/Login")}
         >
           Sign In

@@ -95,11 +95,11 @@ const SignUpPage = () => {
   return (
     <div className=" relative w-full ">
       <div className="brightness-50">
-        <img src={BACKGROUND_IMG} alt="backgound" className=" bg-cover" />
+        <img src={BACKGROUND_IMG} alt="backgound" className=" w-screen object-cover h-screen" />
       </div>
       <form
-        className="bg-black absolute md:[100%] w-[450px] min-h-[500px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]
-          rounded-lg bg-opacity-80 text-white p-[58px] flex flex-col justify-around"
+        className="bg-black absolute md:[100%] sm:w-[450px] w-[350px] min-h-[500px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]
+          rounded-lg bg-opacity-80 text-white sm:p-[58px] p-11 flex flex-col justify-around"
         onSubmit={(event) => event.preventDefault()}
       >
         <h1 className="text-white text-3xl font-bold">Sign In</h1>

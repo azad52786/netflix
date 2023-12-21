@@ -45,13 +45,13 @@ const MovieCard = ({title , movies , id , path}) => {
         <div className=' relative rounded-md pr-1'>
             {
                 sliderbtn && leftSliderbutton && 
-            <button className='h-[210px] absolute top-3 bg-gradient-to-r from-black duration-100 font-bold text-lg sm:text-3xl 
+            <button className='h-[210px] absolute top-3 hidden sm:block bg-gradient-to-r from-black duration-100 font-bold text-lg sm:text-3xl 
             p-2 text-white rounded-sm z-10'
                 onClick={sliderLeftHandeler}
                 ><GrPrevious className=' hover:scale-[1.3] duration-200'/>
             </button>
             }
-            <div className= "flex sm:gap-x-3 gap-x-2 scroll-smooth overflow-hidden -mt-3 sm:mt-0" id={id}>
+            <div className= "flex sm:gap-x-3 gap-x-2 scroll-smooth sm:overflow-hidden overflow-x-scroll -mt-3 sm:mt-0" id={id}>
                 {
                     movies?.map((movie , index) => (title === "top_rated"  
                     ? (<TopMovies key={movie?.id} index={index+1} movie = {movie} path = {path} id={movie?.id} />)
@@ -61,7 +61,7 @@ const MovieCard = ({title , movies , id , path}) => {
             </div>
             {
                 sliderbtn && rightSliderbutton && 
-            <button className='h-[210px] absolute right-0 top-3 bg-gradient-to-l from-black duration-100 font-bold text-3xl 
+            <button className='h-[210px] hidden sm:block absolute right-0 top-3 bg-gradient-to-l from-black duration-100 font-bold text-3xl 
                     p-2 text-white mr-1 rounded-sm'
             onClick={sliderRightHandeler}
                 ><GrNext className=' hover:scale-[1.3] duration-200'/>

@@ -16,9 +16,6 @@ import Movie from './tabs/Movie';
 import NewAndPopu from './tabs/NewAndPopu';
 import VideoPlayingTab from './tabs/VideoPlayingTab';
 import ErrorTab from './tabs/ErrorTab';
-import Shimmer from './component/Shimmer';
-import MovieCardShimmer from './component/MovieCardShimmer';
-import Header from './component/Header';
 import { SuggestionsTab } from './tabs/SuggestionsTab';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

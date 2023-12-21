@@ -40,7 +40,7 @@ const SecondaryMovieContainer = ({movieType , trailerKey , path}) => {
   if(!movies) return ;
   return (
     <div className='bg-[#141414]'>
-        <div className='md:-mt-[15%] placeholder: relative z-20 overflow-hidden w-[95%] mx-9'>
+        <div className='md:-mt-[15%] relative z-20 w-[95%] sm:mx-9 mx-5'>
         {
         Array.from(currPageMovies.entries()).map(([key, value], index) => (
           <MovieCard title={key} movies={value} id={"movie" + index + 1} key={index} path = {path}/>

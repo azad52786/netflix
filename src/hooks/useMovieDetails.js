@@ -3,10 +3,12 @@ import { API_OPTIONS, FETCH_ALL_MOVIE_DETAILS } from '../utils/constant';
 
 const useMovieDetails = (movie_id, movie_key) => {
   console.log(movie_id)
+  console.log(movie_key)
   const [movieDetails, setMovieDetails] = useState(null);
 
   const fetchMovieDetails = async () => {
     try {
+      if(!movie_id) return;
       const api_data = await fetch(FETCH_ALL_MOVIE_DETAILS + movie_key + '/' + movie_id, API_OPTIONS);
       const result = await api_data.json();
       setMovieDetails({

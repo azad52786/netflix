@@ -21,8 +21,8 @@ const MovieTitle = ({title , overview ,ismute  ,setIsmute , trailerKey , movie_i
                 onClick={videoPlayerHandeler}
               >
                 <FaPlay className='mt-1'/> Play </button>
-              <button className='flex text-[0.5rem] md:text-lg sm:text-sm sm:py-3 py-2 px-1 sm:px-2 bg-[#6d6d6e] bg-opacity-70 text-white font-bold gap-x-2 rounded-md'>
-                <FaInfoCircle className=' mt-[4px] sm:mt-1'/> More info</button> 
+              <button className='flex text-[0.5rem] md:text-lg sm:text-sm sm:py-3 py-1 px-1 sm:px-2 bg-[#6d6d6e] bg-opacity-70 text-white font-bold gap-x-2 rounded-md'>
+                <FaInfoCircle className=' mt-[5px] sm:mt-1'/> More info</button> 
           </div>
       </div>
       <button
