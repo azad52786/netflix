@@ -19,17 +19,22 @@ const useFetchTrailer = (movie_id , trailerKey , path) => {
     }
     
     const fetchTrailer = async() => {
-        const trailerapi = await fetch('https://api.themoviedb.org/3/' + trailerKey + '/'+ movie_id +'/videos' , API_OPTIONS);
-        const json = await trailerapi.json();
-        const Data = json?.results?.filter(
-            (video) => video.type === "Trailer"
-            );
-            settrailerData(Data);
-            let index = Math.round(Math.random() * trailerData.length);
-            if(trailerData.length > 0) index = index + 1;
-        const trailer = trailerData?.length > 0 ? trailerData[index] : json.results[0];
-        const dispatch_trailer_in_store = dispatch_trailer(path);
-        dispatch(dispatch_trailer_in_store(trailer));
+        try {
+            const trailerapi = await fetch('https://api.themoviedb.org/3/' + trailerKey + '/'+ movie_id +'/videos' , API_OPTIONS);
+            const json = await trailerapi.json();
+            const Data = json?.results?.filter(
+                (video) => video.type === "Trailer"
+                );
+                settrailerData(Data);
+                let index = Math.round(Math.random() * trailerData.length);
+                if(trailerData.length > 0) index = index + 1;
+            const trailer = trailerData?.length > 0 ? trailerData[index] : json.results[0];
+            const dispatch_trailer_in_store = dispatch_trailer(path);
+            dispatch(dispatch_trailer_in_store(trailer));
+        }
+        catch(e){
+            console.log(e);
+        }
     }
 
 
