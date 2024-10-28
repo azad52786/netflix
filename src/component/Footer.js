@@ -27,7 +27,7 @@ const Footer = () => {
             rel="noreferrer"
             className="hover:text-gray-600"
           >
-            Kaji Azad Ali
+            Maaz Hasan
           </a>
         </div>
       </div>
