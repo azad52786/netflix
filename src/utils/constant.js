@@ -1,21 +1,20 @@
 export const LOGO = "https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png";
 
-
 export const USER_AVTER = "https://okneeraj.github.io/netflix-gpt//avatar-red.jpeg";
-export const FETCH_ALL_MOVIE_DETAILS = "https://api.themoviedb.org/3/";
-export const VIDEO_API = "https://api.themoviedb.org/3/"
+export const FETCH_ALL_MOVIE_DETAILS = process.env.REACT_APP_TMDB_BASE_URL;
+export const VIDEO_API = process.env.REACT_APP_TMDB_BASE_URL;
 
 export const API_OPTIONS = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjNkYTUyMTY0ZGY5ODNlMzhiYTBhZjNkZDdhYTE4ZSIsInN1YiI6IjY1NmViNTZjM2RjMzEzMDBmZWRhOWMzMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uf-8KXSIiZZxqAxFUL34TAOKk98gLoK12S-VAWH59Ac'
+      Authorization: `Bearer ${process.env.REACT_APP_TMDB_ACCESS_TOKEN}`
     }
   };
 
-export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w780/"
-export const BG_CDN_URL = "https://image.tmdb.org/t/p/w300/"
-export const MAIN_BG_URL = "https://image.tmdb.org/t/p/w500/"
+export const IMG_CDN_URL = process.env.REACT_APP_IMG_CDN_URL;
+export const BG_CDN_URL = process.env.REACT_APP_BG_CDN_URL;
+export const MAIN_BG_URL = process.env.REACT_APP_MAIN_BG_URL;
 
 export const now_playing = "now_playing"
 export const popular = "popular"
