@@ -1,0 +1,29 @@
+.blur-border {
+    position: relative;
+    border: solid 1.5em rgba(0, 0, 0, 0.03);
+    height: 50vmin;
+    max-width: 13em;
+    max-height: 7em;
+    border-radius: var(--r);
+    background-origin: border-box;
+    background-clip: padding-box;
+    font-size: 2em;
+  }
+  
+  .blur-border:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: -1.5em;
+    right: -1.5em;
+    bottom: -1.5em;
+    left: -1.5em;
+    border: inherit;
+    border-color: transparent;
+    border-radius: inherit;
+    background: inherit;
+    background-clip: border-box;
+    filter: blur(9px);
+    clip-path: inset(0 round var(--r));
+  }
+  
