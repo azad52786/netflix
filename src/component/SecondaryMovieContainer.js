@@ -36,7 +36,6 @@ const SecondaryMovieContainer = ({movieType , trailerKey , path}) => {
   useFetchmovies(path , allmovieData , trailerKey );
 
   let currPageMovies = new Map(Object.entries(movies));
-  console.log(currPageMovies)
   if(!movies) return ;
   return (
     <div className='bg-[#141414]'>
