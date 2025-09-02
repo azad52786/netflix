@@ -39,6 +39,7 @@ const MobileMainContainer = ({ trailerKey, trailerdata }) => {
         <img
           src={MAIN_BG_URL + backdropPath}
           width={355}
+          alt="Movie backdrop"
           className=" bg-cover pt-[90px] min-h-[520px] w-fit mx-auto rounded-md "
         />
       </div>
