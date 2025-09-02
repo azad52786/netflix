@@ -74,9 +74,6 @@ const SignUpPage = () => {
               setLoginSpinner(false);
             })
             .catch((error) => {
-              // An error occurred
-              // ...
-              // console.log(error);
               setLoginSpinner(false);
             });
         })
