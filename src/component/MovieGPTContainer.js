@@ -34,7 +34,7 @@ const MovieGPTContainer = () => {
   return (
     <div className="min-h-screen w-full flex flex-col gap-y-4 items-center justify-start bg-gradient-to-b from-blue-700 via-gray-400 to-gray-900 pt-8">
       <div className="w-full h-auto flex flex-col gap-y-4 items-center justify-center px-4">
-        <h1 className="sm:text-6xl text-2xl font-bold text-white text-center">
+        <h1 className="sm:text-6xl mt-16 text-2xl font-bold text-white text-center">
           Let me be your film expert!
         </h1>
         <p className="sm:text-xl text-center brightness-90 text-white">
