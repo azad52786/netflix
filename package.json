@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@firebase/auth": "^1.5.1",
+    "@google/generative-ai": "^0.24.1",
     "@material-tailwind/react": "^2.1.7",
     "@reduxjs/toolkit": "^2.0.1",
     "@testing-library/jest-dom": "^5.17.0",

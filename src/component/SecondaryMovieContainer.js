@@ -33,7 +33,7 @@ const SecondaryMovieContainer = ({movieType , trailerKey , path}) => {
       return store?.new;
     }
   })
-  useFetchmovies(path , allmovieData , trailerKey );
+  useFetchmovies(path , allmovieData , trailerKey);
 
   let currPageMovies = new Map(Object.entries(movies));
   if(!movies) return ;
